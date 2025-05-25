@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paket Telkomsel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background: #e60000;
+            padding: 0 0 0 0;
+            box-shadow: 0 2px 8px rgba(230,0,0,0.06);
+        }
+        .navbar-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            height: 56px;
+        }
+        .navbar-logo {
+            color: #fff;
+            font-size: 1.25em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 22px;
+        }
+        .navbar-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            transition: color 0.15s;
+        }
+        .navbar-links a:hover {
+            color: #ffd6d6;
+        }
+        @media (max-width: 900px) {
+            .container { padding: 18px 6px; }
+            .paket-list { gap: 16px; }
+            .navbar-container { padding: 0 10px; }
+        }
+        @media (max-width: 600px) {
+            .paket-list { flex-direction: column; }
+            .paket { padding: 18px 12px 14px 12px; max-width: 100%; }
+            .navbar-container { flex-direction: column; height: auto; padding: 8px 6px; gap: 8px; }
+            .navbar-links { gap: 12px; }
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 32px 28px;
+            border-radius: 16px;
+            box-shadow: 0 6px 32px rgba(230,0,0,0.08), 0 1.5px 6px rgba(0,0,0,0.04);
+        }
+        h1 {
+            color: #e60000;
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            font-weight: 700;
+            text-align: center;
+        }
+        p {
+            color: #444;
+            font-size: 1.1em;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .paket-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+        }
+        .paket {
+            flex: 1 1 240px;
+            background: #fafafa;
+            border: 1.5px solid #eee;
+            border-radius: 12px;
+            padding: 22px 18px 18px 18px;
+            box-shadow: 0 2px 8px rgba(230,0,0,0.04);
+            transition: transform 0.18s, box-shadow 0.18s;
+            position: relative;
+            max-width: 300px;
+        }
+        .paket:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(230,0,0,0.10);
+            z-index: 2;
+        }
+        .paket h2 {
+            font-size: 1.18em;
+            margin: 0 0 12px 0;
+            color: #e60000;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .paket ul {
+            padding-left: 20px;
+            margin: 0 0 14px 0;
+            color: #333;
+            font-size: 1em;
+        }
+        .paket ul li {
+            margin-bottom: 4px;
+        }
+        .paket .harga {
+            font-weight: bold;
+            color: #e60000;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .paket .beli {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 8px 22px;
+            background: #e60000;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            box-shadow: 0 2px 8px rgba(230,0,0,0.08);
+            transition: background 0.18s, box-shadow 0.18s;
+        }
+        .paket .beli:hover {
+            background: #b80000;
+            box-shadow: 0 4px 16px rgba(230,0,0,0.14);
+        }
+        .note {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 28px;
+            text-align: center;
+        }
+    </style>
+</head>
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="#" class="navbar-logo">Telkomsel</a>
+        <div class="navbar-links">
+            <a href="#">Beranda</a>
+            <a href="#">Paket</a>
+            <a href="#">Promo</a>
+            <a href="#">Bantuan</a>
+        </div>
+    </div>
+</nav>
+<body>
+    <div class="container">
+        <h1>Paket Telkomsel</h1>
+        <p>Pilih paket terbaik dari Telkomsel sesuai kebutuhan Anda!</p>
+        <div class="paket-list">
+            <div class="paket">
+                <h2>Paket Internet Harian</h2>
+                <ul>
+                    <li>Kuota: 1GB</li>
+                    <li>Masa Aktif: 1 Hari</li>
+                </ul>
+                <div class="harga">Rp10.000</div>
+                <a href="#" class="beli">Beli Sekarang</a>
+            </div>
+            <div class="paket">
+                <h2>Paket Internet Mingguan</h2>
+                <ul>
+                    <li>Kuota: 5GB</li>
+                    <li>Masa Aktif: 7 Hari</li>
+                </ul>
+                <div class="harga">Rp35.000</div>
+                <a href="#" class="beli">Beli Sekarang</a>
+            </div>
+            <div class="paket">
+                <h2>Paket Internet Bulanan</h2>
+                <ul>
+                    <li>Kuota: 15GB</li>
+                    <li>Masa Aktif: 30 Hari</li>
+                </ul>
+                <div class="harga">Rp100.000</div>
+                <a href="#" class="beli">Beli Sekarang</a>
+            </div>
+            <div class="paket">
+                <h2>Paket Combo (Internet + Telepon + SMS)</h2>
+                <ul>
+                    <li>Kuota Internet: 10GB</li>
+                    <li>Telepon: 100 Menit ke Semua Operator</li>
+                    <li>SMS: 200 SMS ke Semua Operator</li>
+                    <li>Masa Aktif: 30 Hari</li>
+                </ul>
+                <div class="harga">Rp120.000</div>
+                <a href="#" class="beli">Beli Sekarang</a>
+            </div>
+        </div>
+        <div class="note">
+            Syarat & Ketentuan berlaku.<br>
+            Untuk pembelian, silakan hubungi <b>*363#</b> atau aplikasi MyTelkomsel.
+        </div>
+    </div>
+</body>
+</html>

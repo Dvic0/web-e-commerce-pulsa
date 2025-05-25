@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Halaman Pencarian</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+            margin: 0;
+            min-height: 100vh;
+        }
+        .search-box {
+            background: #fff;
+            max-width: 420px;
+            margin: 60px auto 0 auto;
+            padding: 32px 28px 28px 28px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(60, 72, 88, 0.12);
+        }
+        .search-box h2 {
+            margin-bottom: 18px;
+            color: #3b3b3b;
+            letter-spacing: 1px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .search-input-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid #c7d2fe;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border 0.2s;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            border-color: #6366f1;
+            background: #f1f5ff;
+        }
+        button {
+            padding: 10px 22px;
+            background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+        }
+        button:hover {
+            background: linear-gradient(90deg, #4f46e5 0%, #6366f1 100%);
+        }
+        .results {
+            margin-top: 22px;
+        }
+        .result-item {
+            padding: 12px 14px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            margin-bottom: 10px;
+            border: 1px solid #e0e7ef;
+            color: #374151;
+            font-size: 1.05rem;
+            transition: background 0.2s;
+        }
+        .result-item:hover {
+            background: #e0e7ff;
+        }
+        .results > div:not(.result-item) {
+            color: #b91c1c;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-box">
+        <h2>Pencarian</h2>
+        <div class="search-input-group">
+            <input type="text" id="searchInput" placeholder="Cari sesuatu...">
+            <button onclick="search()">Cari</button>
+        </div>
+        <div class="results" id="results"></div>
+    </div>
+    <script>
+        // Data untuk setiap provider
+        const providerData = {
+            xl: [
+                "XL Xtra Combo Lite",
+                "XL HotRod",
+                "XL Combo Flex"
+            ],
+            telkomsel: [
+                "Telkomsel Simpati",
+                "Telkomsel Loop",
+                "Telkomsel Kartu As"
+            ],
+            indosat: [
+                "Indosat Freedom Internet",
+                "Indosat Yellow",
+                "Indosat Unlimited"
+            ],
+            tri: [
+                "Tri AlwaysOn",
+                "Tri Happy",
+                "Tri Kuota++"
+            ]
+        };
+
+        // Mapping kata kunci ke provider
+        function getProvider(query) {
+            query = query.toLowerCase();
+            if (query.includes("xl")) return "xl";
+            if (query.includes("telkomsel")) return "telkomsel";
+            if (query.includes("indosat")) return "indosat";
+            if (query.includes("tri")) return "tri";
+            return null;
+        }
+
+        function search() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            if (!query) return;
+
+            const provider = getProvider(query);
+
+            if (provider && providerData[provider]) {
+                // Redirect ke halaman provider
+                window.location.href = provider + ".html";
+                return;
+            }
+
+            // Jika bukan provider, lakukan pencarian umum
+            const allData = [].concat(...Object.values(providerData));
+            const filtered = allData.filter(item => item.toLowerCase().includes(query));
+            if (filtered.length === 0) {
+                resultsDiv.innerHTML = '<div>Tidak ditemukan hasil.</div>';
+            } else {
+                filtered.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'result-item';
+                    div.textContent = item;
+                    resultsDiv.appendChild(div);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

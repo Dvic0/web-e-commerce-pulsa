@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penawaran Paket XL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(135deg, #e3f0fa 0%, #f4f4f4 100%);
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background: #0a57a1;
+            padding: 0 0 0 0;
+            box-shadow: 0 2px 8px rgba(10,87,161,0.07);
+        }
+        .navbar-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 56px;
+        }
+        .navbar-logo {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 22px;
+        }
+        .navbar-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.15s;
+        }
+        .navbar-links a:hover {
+            color: #ffd700;
+        }
+        @media (max-width: 700px) {
+            .navbar-container {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+                padding: 8px 12px;
+            }
+            .navbar-links {
+                margin-top: 6px;
+                gap: 14px;
+            }
+        }
+        .container {
+            max-width: 900px;
+            margin: 48px auto;
+            background: #fff;
+            padding: 32px 28px;
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(10,87,161,0.10);
+        }
+        h1 {
+            color: #0a57a1;
+            font-size: 2.4rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        p {
+            color: #444;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .paket-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+        }
+        .paket {
+            flex: 1 1 260px;
+            background: linear-gradient(120deg, #e3f0fa 70%, #cbe6fa 100%);
+            border-radius: 12px;
+            padding: 24px 18px 20px 18px;
+            box-shadow: 0 2px 12px rgba(10,87,161,0.07);
+            transition: transform 0.18s, box-shadow 0.18s;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 260px;
+            max-width: 320px;
+        }
+        .paket:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(10,87,161,0.13);
+        }
+        .paket h2 {
+            margin-top: 0;
+            color: #0a57a1;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .paket ul {
+            padding-left: 20px;
+            margin-bottom: 18px;
+            color: #333;
+        }
+        .paket ul li {
+            margin-bottom: 4px;
+        }
+        .paket strong {
+            color: #0a57a1;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: auto;
+            padding: 10px 22px;
+            background: linear-gradient(90deg, #0a57a1 70%, #1e90ff 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(10,87,161,0.08);
+            transition: background 0.18s, box-shadow 0.18s;
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #08406c 70%, #0a57a1 100%);
+            box-shadow: 0 4px 16px rgba(10,87,161,0.15);
+        }
+        @media (max-width: 900px) {
+            .container { padding: 18px 6px; }
+            .paket-list { gap: 18px; }
+        }
+        @media (max-width: 700px) {
+            .paket-list { flex-direction: column; align-items: center; }
+            .paket { width: 100%; max-width: 400px; }
+        }
+    </style>
+</head>
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="#" class="navbar-logo">XL</a>
+        <div class="navbar-links">
+            <a href="#">Beranda</a>
+            <a href="#paket">Paket</a>
+            <a href="#kontak">Kontak</a>
+        </div>
+    </div>
+</nav>
+<body>
+    <div class="container">
+        <h1>Penawaran Paket XL Terbaik</h1>
+        <p>Pilih paket XL sesuai kebutuhan Anda.<br>Nikmati internet cepat, kuota besar, dan harga terjangkau!</p>
+        <div class="paket-list">
+            <div class="paket">
+                <h2>Paket Xtra Combo Lite</h2>
+                <ul>
+                    <li>Kuota utama 10GB</li>
+                    <li>Kuota YouTube 5GB</li>
+                    <li>Masa aktif 30 hari</li>
+                </ul>
+                <strong>Rp 50.000</strong>
+                <a href="#" class="btn">Beli Sekarang</a>
+            </div>
+            <div class="paket">
+                <h2>Paket Xtra Combo VIP</h2>
+                <ul>
+                    <li>Kuota utama 20GB</li>
+                    <li>Kuota YouTube 10GB</li>
+                    <li>Gratis nelpon ke semua operator</li>
+                    <li>Masa aktif 30 hari</li>
+                </ul>
+                <strong>Rp 100.000</strong>
+                <a href="#" class="btn">Beli Sekarang</a>
+            </div>
+            <div class="paket">
+                <h2>Paket Xtra Unlimited Turbo</h2>
+                <ul>
+                    <li>Internet Unlimited</li>
+                    <li>FUP 1.5GB/hari</li>
+                    <li>Masa aktif 30 hari</li>
+                </ul>
+                <strong>Rp 70.000</strong>
+                <a href="#" class="btn">Beli Sekarang</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

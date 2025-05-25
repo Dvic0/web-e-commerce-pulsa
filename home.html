@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paket Data</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .perspective-3d { perspective: 1200px; }
+    .animate-3d-pop {
+      animation: pop3d 0.5s cubic-bezier(.25,1.7,.45,.87);
+      transform-style: preserve-3d;
+    }
+    @keyframes pop3d {
+      0% { opacity: 0; transform: rotateY(-30deg) scale(0.8) translateZ(-100px);}
+      100% { opacity: 1; transform: rotateY(0deg) scale(1) translateZ(0);}
+    }
+    .rotate-y-12 { transform: rotateY(12deg);}
+    .bg-cream-100 { background-color: #fdf6ee; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-white to-gray-100 min-h-screen font-sans">
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 py-2 sticky top-0 z-40">
+    <div class="container mx-auto flex items-center justify-between px-2">
+      <h1 class="text-lg font-bold tracking-wide text-gray-900 flex items-center gap-2">
+        <span class="px-2 py-1 rounded-lg bg-gray-100">Fic.o</span>
+      </h1>
+      <nav class="space-x-1 text-sm">
+        <a href="#" class="relative text-gray-600 hover:text-teal-600 transition px-2 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 active:scale-95 active:shadow-lg">Beranda</a>
+        <a href="#" class="relative text-gray-600 hover:text-teal-600 transition px-2 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 active:scale-95 active:shadow-lg">Paket</a>
+        <a href="kontak.html" class="relative text-gray-600 hover:text-teal-600 transition px-2 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 active:scale-95 active:shadow-lg">Kontak</a>
+        <a href="pencarian.html" class="inline-flex items-center text-gray-600 hover:text-teal-600 transition" title="Cari">
+          <svg class="w-5 h-5 mr-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="profile.html" class="block group">
+          <div class="flex items-center gap-2 bg-white rounded-xl p-1 shadow border border-gray-100 transition">
+            <div class="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center text-base font-bold text-teal-500">F</div>
+            <div>
+              <p class="font-semibold text-gray-800 text-xs">08********</p>
+              <p class="text-xs text-gray-500">Fico</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-xl mx-auto px-2 pt-3">
+
+    <!-- Profile Popup Modal -->
+    <div id="profileModal" class="fixed inset-0 bg-black/30 flex items-center justify-center z-50 hidden">
+      <div class="max-w-sm w-full bg-white border border-gray-200 rounded-xl p-4 shadow text-gray-900 relative animate-3d-pop">
+        <button onclick="closeProfile()" class="absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-xl font-bold">&times;</button>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-xl font-bold">F</div>
+          <div>
+            <h1 class="text-base font-bold">Fico</h1>
+            <p class="text-xs text-gray-500">08********</p>
+            <p class="text-xs mt-1 text-gray-400">Member sejak 2024</p>
+          </div>
+        </div>
+        <div class="mt-3">
+          <ul class="text-xs space-y-0.5">
+            <li>Email: <span class="text-gray-600">fico@email.com</span></li>
+            <li>Status: <span class="text-green-500 font-semibold">Aktif</span></li>
+            <li>Level: <span class="text-gray-600">Regular</span></li>
+          </ul>
+          <div class="mt-3 flex space-x-2">
+            <a href="edit-profile.html" class="bg-teal-500 hover:bg-teal-600 px-3 py-1.5 rounded text-white font-semibold transition text-xs">Edit</a>
+            <a href="logout.html" class="bg-gray-200 hover:bg-gray-300 px-3 py-1.5 rounded text-gray-700 font-semibold transition text-xs">Keluar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kuota & Pulsa -->
+    <div class="flex space-x-2 mt-3">
+      <div class="bg-white p-2 rounded-lg text-center w-1/2 shadow border border-gray-100">
+        <p class="text-gray-500 text-xs">Kuota</p>
+        <p class="text-xl font-bold text-gray-900 mt-0.5">0 GB</p>
+      </div>
+      <div class="bg-white p-2 rounded-lg text-center w-1/2 shadow border border-gray-100">
+        <p class="text-gray-500 text-xs">Pulsa</p>
+        <p class="text-xl font-bold text-gray-900 mt-0.5">RP 0</p>
+      </div>
+    </div>
+
+    <!-- Providers -->
+    <div class="flex flex-wrap justify-center mt-3 gap-1" id="providerList">
+      <a href="fic.o.html" class="bg-teal-500 text-white font-medium px-3 py-0.5 rounded-full text-xs focus:outline-none focus:ring-2 focus:ring-teal-400 transition" data-provider="fic.o">fic.o</a>
+      <a href="telkomsel.html" class="bg-gray-100 text-gray-800 font-medium px-3 py-0.5 rounded-full text-xs focus:outline-none focus:ring-2 focus:ring-teal-400 transition" data-provider="Telkomsel">Telkomsel</a>
+      <a href="indosat.html" class="bg-gray-100 text-gray-800 font-medium px-3 py-0.5 rounded-full text-xs focus:outline-none focus:ring-2 focus:ring-teal-400 transition" data-provider="Indosat">Indosat</a>
+      <a href="xl.html" class="bg-gray-100 text-gray-800 font-medium px-3 py-0.5 rounded-full text-xs focus:outline-none focus:ring-2 focus:ring-teal-400 transition" data-provider="XL">XL</a>
+      <a href="tri.html" class="bg-gray-100 text-gray-800 font-medium px-3 py-0.5 rounded-full text-xs focus:outline-none focus:ring-2 focus:ring-teal-400 transition" data-provider="Tri">Tri</a>
+    </div>
+    <script>
+      // Provider interactive selection (for <a> tags)
+      document.addEventListener('DOMContentLoaded', function() {
+        const providerList = document.getElementById('providerList');
+        if (providerList) {
+          providerList.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+              Array.from(providerList.children).forEach(btn => {
+                btn.classList.remove('bg-teal-500', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-gray-800');
+              });
+              e.target.classList.remove('bg-gray-100', 'text-gray-800');
+              e.target.classList.add('bg-teal-500', 'text-white');
+              // Default link navigation will occur
+            }
+          });
+        }
+      });
+    </script>
+
+    <!-- Promo Slide -->
+    <div class="mt-4"></div>
+      <div class="relative perspective-3d">
+        <div id="promoSlider" class="overflow-hidden rounded-xl shadow border border-gray-100">
+          <div class="flex transition-transform duration-500" id="promoSlides" style="width: 300%; transform: translateX(0%);">
+            <!-- Slide 1 -->
+            <div class="w-full flex-shrink-0 bg-cream-100 flex items-center gap-3 p-4">
+              <img src="https://img.icons8.com/color/48/discount--v1.png" alt="Promo" class="w-12 h-12">
+              <div>
+                <h3 class="font-bold text-teal-700 text-base">Diskon Paket Data!</h3>
+                <p class="text-xs text-gray-700">Dapatkan diskon hingga 30% untuk pembelian paket tertentu.</p>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="w-full flex-shrink-0 bg-cream-100 flex items-center gap-3 p-4">
+              <img src="https://img.icons8.com/color/48/gift--v1.png" alt="Bonus" class="w-12 h-12">
+              <div>
+                <h3 class="font-bold text-teal-700 text-base">Bonus Kuota</h3>
+                <p class="text-xs text-gray-700">Beli paket minimal 50rb, dapat bonus kuota 2GB!</p>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="w-full flex-shrink-0 bg-cream-100 flex items-center gap-3 p-4">
+              <img src="https://img.icons8.com/color/48/flash-on--v1.png" alt="Cepat" class="w-12 h-12">
+              <div>
+                <h3 class="font-bold text-teal-700 text-base">Transaksi Cepat</h3>
+                <p class="text-xs text-gray-700">Proses pembelian paket hanya dalam hitungan detik.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Slider Controls -->
+          <button id="prevPromo" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow hover:bg-teal-100 transition z-10">
+            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button id="nextPromo" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow hover:bg-teal-100 transition z-10">
+            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+        <!-- Dots -->
+        <div class="flex justify-center gap-1 mt-2" id="promoDots">
+          <span class="promo-dot w-2 h-2 bg-teal-500 rounded-full inline-block"></span>
+          <span class="promo-dot w-2 h-2 bg-gray-300 rounded-full inline-block"></span>
+          <span class="promo-dot w-2 h-2 bg-gray-300 rounded-full inline-block"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paket Section -->
+    <div class="bg-white mt-4 px-2 pb-6 pt-3 rounded-t-2xl shadow border border-gray-100">
+      <h2 class="font-bold text-gray-900 text-sm mb-2">Rekomendasi Paket</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        <a href="pembayaran.html" class="bg-gray-50 rounded-lg shadow-sm p-2 text-center block border border-gray-100 hover:border-teal-400 transition hover:scale-105">
+          <p class="font-medium text-xs text-gray-700">10GB / 10 Hari</p>
+          <p class="font-bold text-base mt-1 text-teal-600">RP 30.000</p>
+        </a>
+        <a href="pembayaran.html" class="bg-gray-50 rounded-lg shadow-sm p-2 text-center block border border-gray-100 hover:border-teal-400 transition hover:scale-105">
+          <p class="font-medium text-xs text-gray-700">Unlimited 1 Hari</p>
+          <p class="font-bold text-base mt-1 text-teal-600">RP 50.000</p>
+        </a>
+        <a href="pembayaran.html" class="bg-gray-50 rounded-lg shadow-sm p-2 text-center block border border-gray-100 hover:border-teal-400 transition hover:scale-105">
+          <p class="font-medium text-xs text-gray-700">10GB / 1 Hari</p>
+          <p class="font-bold text-base mt-1 text-teal-600">RP 10.000</p>
+        </a>
+        <a href="pembayaran.html" class="bg-gray-50 rounded-lg shadow-sm p-2 text-center block border border-gray-100 hover:border-teal-400 transition hover:scale-105">
+          <p class="font-medium text-xs text-gray-700">100GB / 30 Hari</p>
+          <p class="font-bold text-base mt-1 text-teal-600">RP 500.000</p>
+        </a>
+        <a href="pembayaran.html" class="bg-gray-50 rounded-lg shadow-sm p-2 text-center block border border-gray-100 hover:border-teal-400 transition hover:scale-105">
+          <p class="font-medium text-xs text-gray-700">30GB / 30 Hari</p>
+          <p class="font-bold text-base mt-1 text-teal-600">RP 100.000</p>
+        </a>
+        <a href="pembayaran.html" class="bg-gray-50 rounded-lg shadow-sm p-2 text-center block border border-gray-100 hover:border-teal-400 transition hover:scale-105">
+          <p class="font-medium text-xs text-gray-700">5GB / 7 Hari</p>
+          <p class="font-bold text-base mt-1 text-teal-600">RP 15.000</p>
+        </a>
+      </div>  
+    </div>
+  </main>
+
+  <script>
+    // Profile Modal
+    document.addEventListener('DOMContentLoaded', function() {
+      const profileLink = document.querySelector('a[href="profile.html"]');
+      if (profileLink) {
+        profileLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.getElementById('profileModal').classList.remove('hidden');
+        });
+      }
+    });
+    function closeProfile() {
+      document.getElementById('profileModal').classList.add('hidden');
+    }
+
+    // Promo Slider
+    const slider = document.getElementById('promoSlides');
+    const dots = document.querySelectorAll('#promoDots .promo-dot');
+    const images = slider.children.length;
+    let current = 0;
+    let autoSlide;
+
+    function updateSlider() {
+      slider.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('bg-teal-500', idx === current);
+        dot.classList.toggle('bg-gray-300', idx !== current);
+      });
+    }
+
+    function startAutoSlide() {
+      autoSlide = setInterval(() => {
+        current = (current + 1) % images;
+        updateSlider();
+      }, 5000);
+    }
+
+    function stopAutoSlide() {
+      clearInterval(autoSlide);
+    }
+
+    document.getElementById('prevPromo').onclick = function() {
+      stopAutoSlide();
+      current = (current - 1 + images) % images;
+      updateSlider();
+      startAutoSlide();
+    };
+    document.getElementById('nextPromo').onclick = function() {
+      stopAutoSlide();
+      current = (current + 1) % images;
+      updateSlider();
+      startAutoSlide();
+    };
+
+    document.getElementById('promoSlider').addEventListener('mouseenter', stopAutoSlide);
+    document.getElementById('promoSlider').addEventListener('mouseleave', startAutoSlide);
+
+    // Dot click
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        stopAutoSlide();
+        current = idx;
+        updateSlider();
+        startAutoSlide();
+      });
+    });
+
+    updateSlider();
+    startAutoSlide();
+  </script>
+</body>
+</html>
